@@ -3,6 +3,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppLayoutModule } from './layout/app.layout.module';
+import {FieldsetModule} from "primeng/fieldset";
 
 @NgModule({
     declarations: [

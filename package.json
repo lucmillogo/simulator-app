@@ -1,5 +1,5 @@
 {
-  "name": "ultima-ng",
+  "name": "simulator-app",
   "version": "15.0.1",
   "scripts": {
     "ng": "ng",
