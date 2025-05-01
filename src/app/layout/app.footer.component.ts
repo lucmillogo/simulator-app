@@ -7,5 +7,7 @@ import { LayoutService } from './service/app.layout.service';
 })
 export class AppFooterComponent {
 
+    currentYear: number = new Date().getFullYear();
+
     constructor(public layoutService: LayoutService) {}
 }

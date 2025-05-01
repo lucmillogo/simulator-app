@@ -25,6 +25,7 @@ import { AppConfig, LayoutService } from 'src/app/layout/service/app.layout.serv
 })
 export class DashboardSalesComponent implements OnInit, OnDestroy {
 
+   
     cities: SelectItem[] = [];
 
     products: Product[] = [];
@@ -478,7 +479,10 @@ export class DashboardSalesComponent implements OnInit, OnDestroy {
                     {
                         type: 'line',
                         label: 'Courbe de tendance',
-                        borderColor: this.documentStyle.getPropertyValue('--blue-500'),
+                        backgroundColor: 'gold',
+                        pointBackgroundColor: 'black',
+                        textColor: 'white',
+                        borderColor: 'gold',
                         borderWidth: 2,
                         fill: false,
                         tension: 0.4,
@@ -487,10 +491,12 @@ export class DashboardSalesComponent implements OnInit, OnDestroy {
                     {
                         type: 'bar',
                         label: 'Capital',
-                        backgroundColor: this.documentStyle.getPropertyValue('--green-500'),
+                        backgroundColor: 'gold',
+                        pointBackgroundColor: 'black',
+                        textColor: 'white',
                         data: this.returnData(),
                         borderColor: 'white',
-                        borderWidth: 2
+                        borderWidth: 3
                     },
 
                 ]

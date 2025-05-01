@@ -1,7 +1,48 @@
 .layout-footer {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 1.5rem;
-    background-color: var(--surface-card);
+    //justify-content: space-between;
+    justify-content: center;
+    padding: 1rem ;
+    background: #262626;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.05);
+    border-top: 1px solid var(--surface-border);
+    height: 100px; // Définit une hauteur fixe plus petite
+
+    // Style du logo
+    img {
+        height: 150px;  // Augmentation de la taille
+        width: auto;    // Garder les proportions
+        max-width: 250px;  // Limiter la largeur max
+        object-fit: contain;
+        transition: transform 0.3s ease;
+
+
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+
+  
+    // Animation légère
+    @keyframes subtle-float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px); }
+    }
+
+    // Responsive design
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem;
+        text-align: center;
+
+        img {
+            margin-bottom: 1rem;
+        }
+
+        .social-buttons {
+            justify-content: center;
+        }
+    }
 }

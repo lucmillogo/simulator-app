@@ -8,7 +8,7 @@
     transition: width var(--transition-duration);
     display: flex;
     color: var(--topbar-item-text-color);
-    background-color: var(--topbar-bg);
+    background-color: #262626;
     box-shadow: 0px 1px 10px rgb(0 0 0 / 12%), 0px 4px 5px rgb(0 0 0 / 14%), 0px 2px 4px -1px rgb(0 0 0 / 20%);
 
     ul {
@@ -22,18 +22,59 @@
         align-items: center;
         justify-content: center;
         position: relative;
-        width: 17rem;
-        background-color: var(--topbar-start-bg);
+        width:10rem;
+        background-color: #262626;
 
         .layout-topbar-logo {
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.3s ease;
+            padding: 0.5rem; // Ajout de padding pour donner plus d'espace
 
+            
+            &:hover {
+                transform: scale(1.02);
+            }
+        
+            .layout-topbar-logo-full {
+                height: 75px; 
+                width: auto;
+                object-fit: contain;
+
+                
+                @media screen and (max-width: 768px) {
+                    display: none;
+                }
+            }
+        
             .layout-topbar-logo-slim {
                 display: none;
+                height: 150px; // Ajustez selon vos besoins
+                width: auto;
+                object-fit: contain;
+
+                
+                @media screen and (max-width: 768px) {
+                    display: block;
+                    height: 42px;
+                }
+            }
+
+             // Ajout de media queries pour les grands écrans
+                @media screen and (min-width: 1200px) {
+                    .layout-topbar-logo-full {
+                        height: 56px; // Encore plus grand sur les très grands écrans
+                }
             }
         }
+
+            // Si votre topbar a besoin d'ajustements pour accommoder le logo plus grand
+            :host ::ng-deep .layout-topbar {
+                min-height: 64px; // Assure que la topbar est assez haute pour le logo
+                display: flex;
+                align-items: center;
+            }
 
         .layout-menu-button {
             position: absolute;
@@ -75,38 +116,38 @@
         display: flex;
         flex-grow: 1;
         align-items: center;
-        justify-content: space-between;
+        justify-content: flex-end; // allignement à droite
         padding: 0 2rem;
 
         .layout-megamenu {
             background: none;
 
-            &.p-megamenu .p-megamenu-root-list > .p-menuitem {
-                > .p-menuitem-link {
-                    .p-menuitem-text,
-                    .p-menuitem-icon,
-                    .p-submenu-icon {
-                        color: var(--topbar-item-text-color);
-                    }
+            &.p-megamenu.p-megamenu-horizontal .p-megamenu-root-list>.p-menuitem>.p-menuitem-content .p-menuitem-link {
 
-                    &:not(.p-disabled):hover {
-                        background: var(--topbar-item-hover-bg);
-                        transition: background-color var(--transition-duration);
-                    }
+                .p-menuitem-text,
+                .p-menuitem-icon,
+                .p-submenu-icon {
+                    color: var(--topbar-item-text-color);
+                }
+
+                &:not(.p-disabled):hover {
+                    background: var(--topbar-item-hover-bg);
+                    transition: background-color var(--transition-duration);
                 }
             }
         }
 
         .layout-topbar-actions-end {
+            //margin-left: auto; // allignement à droite egalement
             .layout-topbar-items {
                 display: flex;
                 flex-direction: row;
                 gap: 1rem;
 
-                > li {
+                >li {
                     position: relative;
 
-                    > a {
+                    >a {
                         width: 2.5rem;
                         height: 2.5rem;
                         user-select: none;
@@ -127,7 +168,7 @@
                         }
                     }
 
-                    > div {
+                    >div {
                         position: absolute;
                         top: 3.25rem;
                         right: 0;
@@ -137,12 +178,12 @@
                         background: var(--surface-overlay);
                         color: var(--text-color);
                         border-radius: var(--border-radius);
-                        box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+                        box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .2), 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12);
                     }
 
                     &.layout-topbar-search {
                         position: static;
-                        
+
                         .layout-search-panel {
                             background: var(--surface-overlay);
                             height: 4rem;
@@ -157,7 +198,7 @@
                             padding: 0 2rem;
                             border-radius: 0;
 
-                            > i {
+                            >i {
                                 color: var(--text-color);
                             }
 

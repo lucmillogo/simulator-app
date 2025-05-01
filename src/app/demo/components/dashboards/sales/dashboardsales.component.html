@@ -1,94 +1,101 @@
-<div class="grid">
-    <!--div class="col-12 md:col-6 lg:col-3">
-        <div class="card flex flex-column">
-            <div class="flex align-items-center text-gray-700">
-                <i class="pi pi-shopping-cart text-color"></i>
-                <h6 class="m-0 text-color pl-2">Orders</h6>
-                <div class="ml-auto">
-                    <button pButton pRipple type="button" icon="pi pi-ellipsis-h"
-                        class="p-button-rounded p-button-text" (click)="menu1.toggle($event)"></button>
-                    <p-menu #menu1 [popup]="true"
-                        [model]="[{label: 'Update', icon: 'pi pi-fw pi-refresh'},{label: 'Edit', icon: 'pi pi-fw pi-pencil'}]">
-                    </p-menu>
-                </div>
-            </div>
-            <div class="flex justify-content-between mt-3 flex-wrap">
-                <div class="flex flex-column" style="width: 80px">
-                    <span class="mb-1 text-4xl">640</span>
-                    <span class="font-medium border-round-xs text-white p-1 bg-teal-500 text-sm">1420 Completed</span>
-                </div>
-                <div class="flex align-items-end">
-                    <p-chart type="line" [data]="overviewChartData1" [options]="overviewChartOptions1" [responsive]="true"
-                        height="60px" width="160px"></p-chart>
-                </div>
-            </div>
-        </div>
-    </div-->
-
-    <div class="col-12 md:col-12 lg:col-12">
-        <div class="flex flex-row flex-wrap card-container custom-top">
-            <div class="col-12 text-4xl flex font-bold align-items-center text-blue-500 m-2" style="text-align: center !important;">
-                Graphique d'Evolution d'un Placement
-            </div>
+<!--div class="col-10 md:col-6 lg:col-6">
+    <div class="flex flex-row flex-wrap card-container custom-top">
+        <div class="col-12 text-4xl flex font-bold align-items-center text-white-500 m-2" style="text-align: center !important;">
+            Graphique d'Evolution d'un Placement
         </div>
     </div>
+</div>
+
+
+<div class="grid">
+
+
     <div class="col-12 md:col-4 lg:col-2">
-        <p-fieldset legend="Investissement" style="background-color: lightblue;">
+        <p-fieldset legend="Investissement" class="company-theme">
             <div class="grid">
-                <div class="field col-12 md:col-12 lg:col-12">
+                <div class="field col-12">
                     <label for="capital">Capital investi</label>
-                    <p-inputNumber inputId="integeronly" [(ngModel)]="capital" id="capital"
+                    <p-inputNumber inputId="capital" [(ngModel)]="capital"
                                    [min]="0" (onBlur)="onCapitalChange()"/>
                 </div>
-                <div class="field col-12 md:col-12 lg:col-12">
-                    <label for="duree">Horizon de placement</label>
-                    <p-inputNumber inputId="integeronly" [(ngModel)]="duree" id="duree"
+                <div class="field col-12">
+                    <label for="duree">Horizon de placement (Nbres d'Années)</label>
+                    <p-inputNumber inputId="duree" [(ngModel)]="duree"
                                    [min]="0" [max]="20" (onBlur)="onCapitalChange()"/>
                 </div>
-                <!--div class="field col-12 md:col-12 lg:col-12">
-                    <div class="flex align-items-center">
-                        <p-radioButton name="ANNEE" value="ANNEE" (onBlur)="onCapitalChange()"
-                            [(ngModel)]="typePeriode" inputId="ingredient1" />
-                        <label for="ingredient1" id="ingredient1" class="mr-4">
-                            ANNEE
-                        </label>
-                        <p-radioButton name="MOIS" (onBlur)="onCapitalChange()" value="MOIS"
-                                               [(ngModel)]="typePeriode" inputId="ingredient2" />
-                        <label for="ingredient2" id="ingredient2" class="ml-1">
-                            MOIS
-                        </label>
-                    </div>
-                </div-->
-                <div class="field col-12 md:col-12 lg:col-12">
+                <div class="field col-12">
                     <label for="debut">Date du premier placement</label>
-                    <p-calendar [(ngModel)]="debut" [showIcon]="true" inputId="icondisplay" id="debut"
+                    <p-calendar [(ngModel)]="debut" [showIcon]="true" inputId="debut"
                                 (onSelect)="onCapitalChange()"/>
                 </div>
-                <!--div class="field col-12 md:col-12 lg:col-12">
-                    <label for="taux">Taux annuel ECO</label>
-                    <p-inputNumber inputId="minmaxfraction" [(ngModel)]="taux" [max]="20" id="taux"
-                                   mode="decimal" [minFractionDigits]="2" [maxFractionDigits]="2"
-                                   (onBlur)="onCapitalChange()"/>
-                </div-->
-
-                <div class="field col-12 md:col-12 lg:col-12">
-                    <label>intérêt</label> <br>
-                    <p-tag severity="info" value="" style="font-size: 1em;">
-                        <span style="font-size: 1.2em">{{interet | separateurMillier}}</span></p-tag>
+                <div class="field col-12">
+                    <label>Intérêt</label><br>
+                    <p-tag severity="info">
+                        <span class="value-display">{{ interet | separateurMillier }}</span>
+                    </p-tag>
                 </div>
-                <div class="field col-12 md:col-12 lg:col-12">
-                    <label>Capital + intérêts</label> <br>
-                    <p-tag severity="succes" value="" style="font-size: 1em;">
-                        <span style="font-size: 1.2em">{{capitalInteret | separateurMillier}}</span></p-tag>
+                <div class="field col-12">
+                    <label>Capital + Intérêts</label><br>
+                    <p-tag severity="success">
+                        <span class="value-display">{{ capitalInteret | separateurMillier }}</span>
+                    </p-tag>
                 </div>
             </div>
         </p-fieldset>
     </div>
+
     <div class="col-12 md:col-8 lg:col-10">
-        <p-chart type="bar" [data]="data" [options]="options" />
-        <!--div class="grid" style="margin-left: 8em">
-            <div class="col" *ngFor="let donnee of donnees" style="font-size: 0.8em">{{donnee}}</div>
-        </div-->
+        <p-chart type="bar" [data]="data" [options]="options"></p-chart>
     </div>
 
+</div-->
+
+
+<div class="col-12 text-center my-3">
+    <h1 class="text-4xl font-bold text-primary">Graphique d'Evolution d'un Placement</h1>
+</div>
+
+
+<div class="grid">
+    
+    <div class="col-12 md:col-10 lg:col-2">
+        <p-fieldset legend="Investissement" styleClass="investment-form">
+            <div class="grid">
+                <div class="field col-12">
+                    <label for="capital">Capital investi</label>
+                    <p-inputNumber inputId="capital" [(ngModel)]="capital"
+                                  [min]="0" (onBlur)="onCapitalChange()"/>
+                </div>
+                <div class="field col-12">
+                    <label for="duree">Horizon de placement (Nbres d'Années)</label>
+                    <p-inputNumber inputId="duree" [(ngModel)]="duree"
+                                  [min]="0" [max]="20" (onBlur)="onCapitalChange()"/>
+                </div>
+                <div class="field col-12">
+                    <label for="debut">Date du premier placement : </label>
+                    <p-calendar [(ngModel)]="debut" [showIcon]="true" inputId="debut"
+                              (onSelect)="onCapitalChange()"/>
+                </div>
+                <div class="field col-12">
+                    <label>Intérêt : </label>
+                    <p-tag severity="info" styleClass="result-tag">
+                        <span class="value-display">{{ interet | separateurMillier }}</span>
+                    </p-tag>
+                </div>
+                <div class="field col-12">
+                    <label>Capital + Intérêts : </label>
+                    <p-tag severity="success" styleClass="result-tag">
+                        <span class="value-display">{{ capitalInteret | separateurMillier }}</span>
+                    </p-tag>
+                </div>
+            </div>
+        </p-fieldset>
+    </div>
+
+    
+    <div class="col-12 md:col-8 lg:col-9">
+        <div class="chart-container">
+            <p-chart type="bar" [data]="data" [options]="options"></p-chart>
+        </div>
+    </div>
 </div>
