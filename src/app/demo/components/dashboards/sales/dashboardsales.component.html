@@ -25,22 +25,23 @@
         </div>
     </div-->
 
-    <div class="col-12 md:col-12 lg:col-12">
-        <div class="flex flex-row flex-wrap card-container custom-top">
-            <div class="col-12 text-4xl flex font-bold align-items-center text-blue-500 m-2" style="text-align: center !important;">
-                Graphique d'Evolution d'un Placement
-            </div>
-        </div>
+    <div class="col-12 md:col-12 lg:col-12 text-4xl font-bold text-blue-500 mt-4 text-center">
+            Graphique d'Evolution d'un Placement
     </div>
     <div class="col-12 md:col-4 lg:col-2">
         <p-fieldset legend="Investissement" style="background-color: lightblue;">
             <div class="grid">
-                <div class="field col-12 md:col-12 lg:col-12">
+                <div class="field sm:col-12 md:col-12 lg:col-12">
                     <label for="capital">Capital investi</label>
                     <p-inputNumber inputId="integeronly" [(ngModel)]="capital" id="capital"
                                    [min]="0" (onBlur)="onCapitalChange()"/>
                 </div>
-                <div class="field col-12 md:col-12 lg:col-12">
+                <div class="field sm:col-12 md:col-12 lg:col-12">
+                    <label for="miseAnnuel">Apport Annuel</label>
+                    <p-inputNumber inputId="integeronly" [(ngModel)]="miseAnnuel" id="miseAnnuel"
+                                   [min]="0" [max]="capital" (onBlur)="onCapitalChange()"/>
+                </div>
+                <div class="field sm:col-12 md:col-12 lg:col-12">
                     <label for="duree">Horizon de placement</label>
                     <p-inputNumber inputId="integeronly" [(ngModel)]="duree" id="duree"
                                    [min]="0" [max]="20" (onBlur)="onCapitalChange()"/>
@@ -59,7 +60,7 @@
                         </label>
                     </div>
                 </div-->
-                <div class="field col-12 md:col-12 lg:col-12">
+                <div class="field sm:col-12 md:col-12 lg:col-12">
                     <label for="debut">Date du premier placement</label>
                     <p-calendar [(ngModel)]="debut" [showIcon]="true" inputId="icondisplay" id="debut"
                                 (onSelect)="onCapitalChange()"/>
@@ -71,13 +72,13 @@
                                    (onBlur)="onCapitalChange()"/>
                 </div-->
 
-                <div class="field col-12 md:col-12 lg:col-12">
-                    <label>intérêt</label> <br>
+                <div class="field sm:col-12 md:col-12 lg:col-12">
+                    <label>intérêt&emsp;</label>
                     <p-tag severity="info" value="" style="font-size: 1em;">
                         <span style="font-size: 1.2em">{{interet | separateurMillier}}</span></p-tag>
                 </div>
-                <div class="field col-12 md:col-12 lg:col-12">
-                    <label>Capital + intérêts</label> <br>
+                <div class="field sm:col-12 md:col-12 lg:col-12">
+                    <label>Capital + intérêts&emsp;</label>
                     <p-tag severity="succes" value="" style="font-size: 1em;">
                         <span style="font-size: 1.2em">{{capitalInteret | separateurMillier}}</span></p-tag>
                 </div>
